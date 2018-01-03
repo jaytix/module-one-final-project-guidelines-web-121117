@@ -1,49 +1,70 @@
-# Module One Final Project Guidelines
+# Cocktail Discovery CLI
 
-Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
+[![GitHub package version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
+[![GitHub package version](https://img.shields.io/badge/License-CC%20BY%204.0-brightgreen.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![GitHub package version](https://img.shields.io/badge/School-Flatiron%20School-brightgreen.svg)](https://flatironschool.com/)
+[![GitHub package version](https://img.shields.io/badge/Class-web--121117-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
+[![GitHub package version](https://img.shields.io/badge/Team-Josh%20%7C%20Oleg-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
 
-For your final project, we'll be building a Command Line database application.
 
-## Project Requirements
 
-### Option One - Data Analytics Project
+Table of Contents:
+- [Intro](#intro)
+- [Installation Instructions](#installation-instructions)
+- [Functionality](#functionality)
+- [Models](#models)
+- [Methods](#methods)
+- [Demo](#demo)
+- [JSON](#json)
+- [Contributors guide](#contributirs-guide)
+- [Crdits](#credits)
+- [Apps Used](#apps-used)
+- [License](#license)
+- [Blog](#blog)
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have at minimum three models including one join model. This means you must have a many-to-many relationship.
-3. You should seed your database using data that you collect either from a CSV, a website by scraping, or an API.
-4. Your models should have methods that answer interesting questions about the data. For example, if you've collected info about movie reviews, what is the most popular movie? What movie has the most reviews?
-5. You should provide a CLI to display the return values of your interesting methods.  
-6. Use good OO design patterns. You should have separate classes for your models and CLI interface.
+## Intro
+Brief app description
 
-### Option Two - Command Line CRUD App
+## Installation instructions
+What do we put here?
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have a minimum of three models.
-3. You should build out a CLI to give your user full CRUD ability for at least one of your resources. For example, build out a command line To-Do list. A user should be able to create a new to-do, see all todos, update a todo item, and delete a todo. Todos can be grouped into categories, so that a to-do has many categories and categories have many to-dos.
-4. Use good OO design patterns. You should have separate models for your runner and CLI interface.
+## Functionality
+Describe user stories
 
-### Brainstorming and Proposing a Project Idea
+## Models
+Describe Models
 
-Projects need to be approved prior to launching into them, so take some time to brainstorm project options that will fulfill the requirements above.  You must have a minimum of four [user stories](https://en.wikipedia.org/wiki/User_story) to help explain how a user will interact with your app.  A user story should follow the general structure of `"As a <role>, I want <goal/desire> so that <benefit>"`. In example, if we were creating an app to randomly choose nearby restaurants on Yelp, we might write:
+## Methods
+Describe methods with code snippets
 
-* As a user, I want to be able to enter my name to retrieve my records
-* As a user, I want to enter a location and be given a random nearby restaurant suggestion
-* As a user, I should be able to reject a suggestion and not see that restaurant suggestion again
-* As a user, I want to be able to save to and retrieve a list of favorite restaurant suggestions
-
-## Instructions
-
-1. Fork and clone this repository.
-2. Build your application. Make sure to commit early and commit often. Commit messages should be meaningful (clearly describe what you're doing in the commit) and accurate (there should be nothing in the commit that doesn't match the description in the commit message). Good rule of thumb is to commit every 3-7 mins of actual coding time. Most of your commits should have under 15 lines of code and a 2 line commit is perfectly acceptable.
-3. Make sure to create a good README.md with a short description, install instructions, a contributors guide and a link to the license for your code.
-4. Make sure your project checks off each of the above requirements.
-5. Prepare a video demo (narration helps!) describing how a user would interact with your working project.
+## Demo
+Link to a video demo (narration helps!) describing how a user would interact with your working project.
     * The video should:
       - Have an overview of your project.(2 minutes max)
-6. Prepare a presentation to follow your video.(3 minutes max)
+
+Presentation to follow your video.(3 minutes max)
     * Your presentation should:
       - Describe something you struggled to build, and show us how you ultimately implemented it in your code.
       - Discuss 3 things you learned in the process of working on this project.
       - Address, if anything, what you would change or add to what you have today?
-      - Present any code you would like to highlight.   
-7. *OPTIONAL, BUT RECOMMENDED*: Write a blog post about the project and process.
+      - Present any code you would like to highlight.
+
+## JSON
+JSON
+
+## Contributors guide
+What is a contributors guide?
+
+## Credits
+Give credits if any
+
+## Apps Used
+Stories On Board // User strories
+Cloudapp // Gifs generator
+[Shields.io](https://shields.io/) // Badge generator
+
+## License
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+## Blog
+Link to a blog posts about the project and process.
