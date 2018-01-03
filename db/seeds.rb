@@ -4,34 +4,26 @@ require 'json'
 require 'pry'
 
 
-# cocktails_data = RestClient.get('http://www.thecocktaildb.com/api/json/v1/1352/search.php?s')
-# cocktails_obj = JSON.parse(cocktails_data)
-# drinks_ary = cocktails_obj["drinks"]
-#
+cocktails_data = RestClient.get('https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json')
+drinks_arr = JSON.parse(cocktails_data)
+
 # # Make a Set of unique category names
 # uniq_category_names = Set.new
-#
-# # Create drinks
-# drinks_ary.each do |drinks_ary_element|
-#   name = drinks_ary_element["strDrink"]
-#   image_url = drinks_ary_element["strDrinkThumb"]
-#   instructions = drinks_ary_element["strInstructions"]
-#   uniq_category_names.add(drinks_ary_element["strCategory"])
-#   Drink.create(name: name, image_url: image_url, instructions: instructions)
-# end
-#
-# # Create categories
-# uniq_category_names.each do |category_string|
-#   Category.create(name: category_string)
-# end
-#
-# # Create ingredients
-# uniq_ingredients = Set.new
-#
-# drinks_ary.each do |drinks_ary_element|
-#   ingredients = []
-#
-# end
+
+# Create drinks
+drinks_arr.each do |drinks_arr_element|
+  name = drinks_arr_element["name"]
+  category = drinks_arr_element["category"]
+  ingredients = drinks_arr_element["ingredients"]
+  preparation = drinks_arr_element["preparation"]
+  new_drink = Drink.create(name: name, category: category, preparation: preparation, ingredients: ingredients)
+  ingredients.each do |data|
+    new_ingredient = Ingredient.find_or_create_by(name: data[:ingredient])
+    Measure.find_or_create_by(ingredient: new_ingredient, drink: new_drink, unit: data[:unit], amount: data[:amount])
+  end
+end
+
+
 #
 # # Q-s
 # # 1. How do we grab all indicidual ingredients and add them to our table?
