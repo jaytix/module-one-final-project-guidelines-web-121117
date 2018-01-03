@@ -56,7 +56,7 @@ JSON
 What is a contributors guide?
 
 ## Credits
-Give credits if any
+Terrance Koar
 
 ## Apps Used
 Stories On Board // User strories

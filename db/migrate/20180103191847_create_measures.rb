@@ -3,8 +3,8 @@ class CreateMeasures < ActiveRecord::Migration[5.1]
     create_table :measures do |t|
       t.string :unit
       t.integer :amount
-      t.string :ingredient
-      t.string :drink
+      t.references :ingredient
+      t.references :drink
     end
   end
 end

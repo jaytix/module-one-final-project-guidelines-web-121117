@@ -3,7 +3,7 @@ class CreateDrink < ActiveRecord::Migration[5.0]
     create_table :drinks do |t|
       t.string :name
       t.string :image_url
-      t.integer :category_id
+      t.string :category
     end
   end
 end

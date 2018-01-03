@@ -12,14 +12,14 @@ drinks_arr = JSON.parse(cocktails_data)
 
 # Create drinks
 drinks_arr.each do |drinks_arr_element|
-  name = drinks_arr_element["name"]
-  category = drinks_arr_element["category"]
-  ingredients = drinks_arr_element["ingredients"]
-  preparation = drinks_arr_element["preparation"]
-  new_drink = Drink.create(name: name, category: category, preparation: preparation, ingredients: ingredients)
+  name = drinks_arr_element["name"] || ""
+  category = drinks_arr_element["category"] || ""
+  ingredients = drinks_arr_element["ingredients"] || ""
+  preparation = drinks_arr_element["preparation"] || ""
+  new_drink = Drink.create(name: name.titleize, category: category.titleize, preparation: preparation)
   ingredients.each do |data|
-    new_ingredient = Ingredient.find_or_create_by(name: data[:ingredient])
-    Measure.find_or_create_by(ingredient: new_ingredient, drink: new_drink, unit: data[:unit], amount: data[:amount])
+    new_ingredient = Ingredient.find_or_create_by(name: data["ingredient"])
+    Measure.find_or_create_by(ingredient: new_ingredient, drink: new_drink, unit: data["unit"], amount: data["amount"])
   end
 end
 
