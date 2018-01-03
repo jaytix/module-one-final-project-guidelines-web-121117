@@ -10,25 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102202016) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "drink_ingredients", force: :cascade do |t|
-    t.integer "drink_id"
-    t.integer "ingredient_id"
-  end
+ActiveRecord::Schema.define(version: 20180103181740) do
 
   create_table "drinks", force: :cascade do |t|
-    t.string  "name"
-    t.string  "image_url"
-    t.integer "category_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.integer "category_id"
+    t.string "preparation"
+    t.string "ingredients"
   end
 
   create_table "user_drinks", force: :cascade do |t|
