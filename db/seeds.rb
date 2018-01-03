@@ -18,7 +18,7 @@ drinks_arr.each do |drinks_arr_element|
   preparation = drinks_arr_element["preparation"] || ""
   new_drink = Drink.create(name: name.titleize, category: category.titleize, preparation: preparation)
   ingredients.each do |data|
-    new_ingredient = Ingredient.find_or_create_by(name: data["ingredient"])
+    new_ingredient = Ingredient.find_or_create_by(name: data["ingredient"] || "")
     Measure.find_or_create_by(ingredient: new_ingredient, drink: new_drink, unit: data["unit"], amount: data["amount"])
   end
 end
