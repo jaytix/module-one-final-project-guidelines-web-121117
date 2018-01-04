@@ -35,7 +35,9 @@ class CommandLineInterface
       random_drink_value
     else
       puts "\nAre you serious? Why are you even using this app, then? Think again."
-      are_you_up_for_drink(name) # looping back to the Step 3 question/method
+      puts "Are you up for a drink?"
+      input = y_n_input
+      greeting_random_drink(input) # looping back to the Step 3 question/method
       # loop doesn't work
     end
   end
@@ -60,6 +62,7 @@ class CommandLineInterface
     puts "\nThis is a(n): #{found_drink.category}"
     puts "\nHere are the ingredients: #{display_ingredients(name)}"
     puts "\nAnd this is how you make it: #{found_drink.preparation}"
+    found_drink
   end
 
   def build_a_drink_by_id(id)
@@ -104,7 +107,6 @@ class CommandLineInterface
     input
 
     case
-      #binding.pry
     when input.to_i == 1
       pick_drink_from_list
     when input.to_i == 2
@@ -219,6 +221,8 @@ class CommandLineInterface
       drink = Drink.find_by(name: drink_name)
       drink.users << User.last
       puts "#{drink_name} was added to your favourites."
+    when "n"
+      puts "OK. Let's go to the Main Menu"
     when "menu"
       main_menu
     when "exit"
@@ -232,7 +236,7 @@ class CommandLineInterface
   end
 
   def see_user_favorite_drinks
-    favorite_drinks = User.last.drinks.map { |drink| drink.name }.join(", ")
+    favorite_drinks = User.last.drinks.map { |drink| drink.name }.uniq.join(", ")
     if favorite_drinks.length < 1
       puts "You have not saved any drinks."
     else
@@ -245,7 +249,29 @@ class CommandLineInterface
   end
 
   def popular_drink
+    hash = Hash.new(0)
+    UserDrink.all.each do |drink_instance|
+    if hash[drink_instance.drink_id]
+      hash[drink_instance.drink_id] += 1
+    else
+      hash[drink_instance.drink_id] = 1
+    end
+   end
+   most_popular = Drink.all.find(largest_hash_key(hash))
+   puts "\nThe most popular drink is: #{most_popular.name}"
+   main_menu
+  end
 
+  def largest_hash_key(hash)
+    current_highest_id = ""
+    current_highest = 0
+    hash.each do |k,v|
+      if v > current_highest
+        current_highest = v
+        current_highest_id = k
+      end
+    end
+    current_highest_id
   end
 
   def get_me_drunk
@@ -256,7 +282,6 @@ class CommandLineInterface
     input = y_n_input # => .to_s.downcase
 
     case input
-      # binding.pry
     when "y"
       puts "\n You will be drinking:"
       puts build_a_drink(random_drink)
@@ -305,10 +330,10 @@ class CommandLineInterface
     random_drink_value = greeting_random_drink(up_for_drink_input) # infinite loop for NO is not working
     puts "\nWould you like to know what #{random_drink_value} is?"
     answer = y_n_input
-    # binding.pry
     if answer == "y"
-      build_a_drink(random_drink_value)
+      built_drink = build_a_drink(random_drink_value)
       puts "\nNow that you are a little tipsy, let’s move on to the main menu."
+      add_drink_to_favorites(built_drink.name)
       main_menu
     else
       puts "We thought you were a touch more inquisitive. But that's ok, let's move on."
