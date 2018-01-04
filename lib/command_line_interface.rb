@@ -25,8 +25,9 @@ class CommandLineInterface
   # Step 4. Greeting a new user with a random drink.
   def greeting_random_drink(up_for_drink_input)
     if up_for_drink_input.to_s.downcase == "y"
-      puts "\nYou are drinking: #{random_drink}." # helper method
-      # random_drink
+      random_drink_value = random_drink
+      puts "\nYou are drinking: #{random_drink_value}." # helper method
+      random_drink_value
     else
       puts "\nAre you serious? Why are you even using this app, then? Think again."
       are_you_up_for_drink # looping back to the Step 3 question/method
@@ -67,8 +68,8 @@ class CommandLineInterface
     greet_input = greet
     create_user(greet_input)
     up_for_drink_input = are_you_up_for_drink(greet_input)
-    value = greeting_random_drink(up_for_drink_input) # infinite loop for NO is not working
-
+    random_drink_value = greeting_random_drink(up_for_drink_input) # infinite loop for NO is not working
+    puts "\nWould you like to know what #{random_drink_value} is?"
     puts "\nNow that you are a little tipsy, let’s move on to the main menu."
     main_menu
   end
