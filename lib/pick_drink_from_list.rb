@@ -12,6 +12,9 @@ def pick_drink_from_list
     puts "Cheers! Tara!"
     a = Artii::Base.new :font => 'slant'
     puts a.asciify('IBA Cocktails')
+    puts "                Ver. 0.0.1  |  Licence MIT "
+    puts "         Copyright (C) 2017. FIS | web121117 | JO "
+    puts "  --------------------------------------------------------- "
   else
     puts "Invalid input. Please try again."
     pick_drink_from_list

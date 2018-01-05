@@ -1,7 +1,7 @@
 # Cocktail Discovery CLI
 
 [![GitHub package version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
-[![GitHub package version](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![GitHub package version](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/blob/master/LICENSE.md)
 [![GitHub package version](https://img.shields.io/badge/School-Flatiron%20School-brightgreen.svg)](https://flatironschool.com/)
 [![GitHub package version](https://img.shields.io/badge/Class-web--121117-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
 [![GitHub package version](https://img.shields.io/badge/Team-Josh%20%7C%20Oleg-brightgreen.svg)](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/tree/oleg)
@@ -56,15 +56,17 @@ JSON
 What is a contributors guide?
 
 ## Credits
-_Terrance_, Daniel
+Terrance, Daniel
 
 ## Apps Used
-Stories On Board // User strories
-Cloudapp // Gifs generator
+[Stories On Board](http://storiesonboard.com/) // User strories
+
+[Cloudapp](https://www.getcloudapp.com/) // Gifs generator
+
 [Shields.io](https://shields.io/) // Badge generator
 
 ## License
-[MIT](https://creativecommons.org/licenses/by/4.0/)
+[MIT](https://github.com/jaytix/module-one-final-project-guidelines-web-121117/blob/master/LICENSE.md)
 
 ## Blog
 Link to a blog posts about the project and process.
