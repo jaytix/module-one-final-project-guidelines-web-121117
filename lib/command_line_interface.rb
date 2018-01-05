@@ -1,16 +1,21 @@
 require_relative "./pick_drink_from_list.rb" #may or may not work
+require 'colorize'
+
 
 class CommandLineInterface
 
   # Step 1. Greet the user
   def greet
     a = Artii::Base.new :font => 'slant'
-    puts a.asciify('IBA Cocktails')
-    puts "                Ver. 0.0.1  |  Licence MIT "
-    puts "         Copyright (C) 2017. FIS | web121117 | JO "
-    puts "  --------------------------------------------------------- "
+    puts a.asciify('- IBA Cocktails -').colorize(:blue)
+    puts "       Absorb liquid wonders into ultramicroscopic dens of your soul.".colorize(:red)
+    puts ""
+    puts "         --------------------------------------------------------- "
+    puts "                       Ver. 0.0.1  |  Licence MIT "
+    puts "                Copyright (C) 2017. FIS | web121117 | JO "
+    puts "         --------------------------------------------------------- "
     puts "\nHello, and welcome to IBA Cocktails CLI."
-    print "What’s your name? "
+    print "\nHow would you prefer to be addressed? "
     input = gets.chomp
     input.to_s.downcase
     input
@@ -23,8 +28,8 @@ class CommandLineInterface
 
   # Step 3. Ask a question:
   def are_you_up_for_drink(name)
-    print "\nHello #{name.capitalize}! Are you up for a drink? [Y/n]: "
-    #print "y/n: > "
+    puts "\nIt is our utmost pleasere to host you here, #{name.capitalize}!".colorize(:green)
+    print "\nDare to tickle your sensory geisthavens? [Y/n]: "
     input = gets.chomp
     input.to_s.downcase
     input
@@ -34,12 +39,13 @@ class CommandLineInterface
   def greeting_random_drink(up_for_drink_input)
     if up_for_drink_input.to_s.downcase == "y"
       random_drink_value = random_drink
-      puts "\nGreat choice! You are drinking: #{random_drink_value}." # helper method
+      puts "\nWhat a great choice! You are imbibing: #{random_drink_value}.".colorize(:green)
       random_drink_value
     else
-      puts "\nAre you serious? Why are you even using this app, then? Think again."
-      puts "\nAre you up for a drink?"
-      input = y_n_input
+      puts "\nWe fail to believe that you are refusing to heal and confuse your soul. Please reconsider.".colorize(:green)
+      print "\nAre you up for a drink? [Y/n]: "
+      input = gets.chomp
+      input.to_s.downcase
       greeting_random_drink(input)
     end
   end
@@ -59,10 +65,12 @@ class CommandLineInterface
   # Helper method build_a_drink
   def build_a_drink(name)
     found_drink = Drink.all.find_by(name: name)
-    puts "\n #{found_drink.name.upcase}"
-    puts "\nThis is a(n): #{found_drink.category}"
-    puts "\nHere are the ingredients: #{display_ingredients(name)}"
-    puts "\nAnd this is how you make it: #{found_drink.preparation}"
+    puts ""
+    puts "\n     #{found_drink.name.upcase}".colorize(:red)
+    puts "     ---------------------------------------"
+    puts "\n     This is a(n) #{found_drink.category} concocted with #{display_ingredients(name)}."
+    puts "\n     And this is how you make it: #{found_drink.preparation}"
+    puts "     ---------------------------------------"
     found_drink
   end
 
@@ -76,10 +84,12 @@ class CommandLineInterface
   # Helper method build_a_drink_by_id
   def build_a_drink_by_id(id)
     found_drink = Drink.all.find(id)
-    puts "\n #{found_drink.name.upcase}"
-    puts "\nThis is a(n): #{found_drink.category}"
-    puts "\nHere are the ingredients: #{display_ingredients_by_id(id)}"
-    puts "\nAnd this is how you make it: #{found_drink.preparation}"
+    puts ""
+    puts "\n     #{found_drink.name.upcase}".colorize(:red)
+    puts "     ---------------------------------------"
+    puts "\n     This is a(n) #{found_drink.category} concocted with #{display_ingredients_by_id(id)}."
+    puts "\n     And this is how you make it: #{found_drink.preparation}"
+    puts "     ---------------------------------------"
   end
 
   # Helper method display_ingredients_by_id
@@ -92,19 +102,19 @@ class CommandLineInterface
 
   ########## Main Menu ##############
   def main_menu
-    puts "\n            ########### MAIN MENU ###########"
+    puts "\n      ################# MAIN MENU #################"
     table_data = [
-      { :number => "1.",  :option => "Pick a drink from the drinks list." },
-      { :number => "2.", :option => "Get a drink suggestion from a bartender." },
-      { :number => "3.", :option => "See your favorite drinks list." },
-      { :number => "4.", :option => "See what the most popular drink is." },
-      { :number => "5.", :option => "Enter GET ME DRUNK mode." },
-      { :number => "6.", :option => "Exit." }
+      { :choice => "1.",  :matters => "Crawl through liquid paradise." },
+      { :choice => "2.", :matters => "Consult a master mixologist." },
+      { :choice => "3.", :matters => "Dive into your personal symphonic sublimity." },
+      { :choice => "4.", :matters => "See the greatest concoction ever made." },
+      { :choice => "5.", :matters => "Take a nighttime walk into oblivion." },
+      { :choice => "6.", :matters => "Exit." }
     ]
     Formatador.display_table(table_data)
-    puts "\nYou can return to Main menu anytime by typing [menu]."
+    puts "\nFind yourself gazing over the above options again by typing [menu]."
     # Input
-    print "Choose an option. [1-6]: "
+    print "Make your choice [1-6]: "
     input = gets.chomp
     input
 
@@ -232,7 +242,9 @@ class CommandLineInterface
       when "y"
         drink = Drink.find_by(name: drink_name)
         drink.users << User.last
-        puts "\n#{drink_name} was added to your favourites."
+        puts "   _________________________________________________________".colorize(:green)
+        puts "\n  |     #{drink_name} has been added to your favourites.      ".colorize(:green)
+        puts "   _________________________________________________________".colorize(:green)
       when "n"
         puts "\nOK. Let's go to the Main menu."
         main_menu
@@ -370,6 +382,7 @@ class CommandLineInterface
   end
 
 
+
   def run
     greet_input = greet # => current user name
     create_user(greet_input)
@@ -381,7 +394,7 @@ class CommandLineInterface
     if input == "y"
       built_drink = build_a_drink(random_drink_value)
       add_drink_to_favorites(built_drink.name)
-      puts "\nNow that you are a little tipsy, let’s move on to the main menu."
+      puts "\nNow that you are a little tipsy, let’s move on to the main menu.".colorize(:green)
       main_menu
     else
       puts "We thought you were a touch more inquisitive. But that's ok, let's move on."

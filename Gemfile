@@ -9,4 +9,6 @@ gem "rest-client"
 gem "json"
 gem "artii"
 gem "formatador"
+gem "table_print"
+gem 'colorize', '~> 0.8.1'
 gem "require_all"
