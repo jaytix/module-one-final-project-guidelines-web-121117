@@ -166,40 +166,52 @@ class CommandLineInterface
         puts ""
         puts "A modern classic. Enjoy!".colorize(:green).colorize(:green)
         build_a_drink("Moscow Mule")
-        add_drink_to_favorites("Moscow Mule")
-        what_next
+        yes_input = add_drink_to_favorites("Moscow Mule")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "gin"
         puts ""
         puts "Can't go wrong with Negroni. Perfect balance.".colorize(:green)
         build_a_drink("Negroni")
-        add_drink_to_favorites("Negroni")
-        what_next
+        yes_input = add_drink_to_favorites("Negroni")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "rum"
         puts ""
         puts "Enjoy the Hemingway's take on a classic daiquiri.".colorize(:green)
         build_a_drink("Hemingway Special")
-        add_drink_to_favorites("Hemingway Special")
-        what_next
+        yes_input = add_drink_to_favorites("Hemingway Special")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "tequila"
         puts ""
         puts "What else but a refreshing and tingy Margarita?".colorize(:green)
         build_a_drink("Margarita")
-        add_drink_to_favorites("Margarita")
-        what_next
+        yes_input = add_drink_to_favorites("Margarita")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "whiskey"
         puts ""
         puts "Perfect choice. Here are two options:".colorize(:green)
         build_a_drink("Old Fashioned")
         add_drink_to_favorites("Old Fashioned")
         build_a_drink("Sazerac")
-        add_drink_to_favorites("Sazerac")
-        what_next
+        yes_input = add_drink_to_favorites("Sazerac")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "cognac"
         puts ""
         puts "Go back in time with this Jazz Age classic.".colorize(:green)
         build_a_drink("Sidecar")
-        add_drink_to_favorites("Sidecar")
-        what_next
+        yes_input = add_drink_to_favorites("Sidecar")
+        if yes_input == "y" || yes_input == "Y"
+          what_next
+        end
       when "exit"
         puts "Cheers! Tara!"
         a = Artii::Base.new :font => 'slant'
