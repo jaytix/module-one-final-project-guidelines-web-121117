@@ -132,10 +132,13 @@ class CommandLineInterface
       when input.to_i == 6
         puts "Cheers! Tara!"
         a = Artii::Base.new :font => 'slant'
-        puts a.asciify('IBA Cocktails')
-        puts "                Ver. 0.0.1  |  Licence MIT "
-        puts "         Copyright (C) 2017. FIS | web121117 | JO "
-        puts "  --------------------------------------------------------- "
+        puts a.asciify('- IBA Cocktails -').colorize(:blue)
+        puts "       Absorb liquid wonders into ultramicroscopic dens of your soul.".colorize(:red)
+        puts ""
+        puts "         --------------------------------------------------------- "
+        puts "                       Ver. 0.0.1  |  Licence MIT "
+        puts "                Copyright (C) 2017. FIS | web121117 | JO "
+        puts "         --------------------------------------------------------- "
       when input.to_s == "menu"
         main_menu
       else
@@ -147,47 +150,53 @@ class CommandLineInterface
   def bartender_suggestion
     # What’s your base liquor? #negroni #of #daiquiri #sidecar #sazerac #moscow mule #margarita
     a = Artii::Base.new :font => 'slant'
-    puts a.asciify('VIP ZONE')
-    puts "\nChoose your base liquor:"
-    puts "\nVodka"
-    puts "\nGin"
-    puts "\nRum"
-    puts "\nTequila"
-    puts "\nWhiskey"
-    puts "\nCognac"
-    print "Type in your choice: "
+    puts a.asciify('- VIP ZONE -').colorize(:red)
+    puts "\nUnleash your delightful curiousity by chosing your poison:".colorize(:green)
+    puts "\nVodka".colorize(:red)
+    puts "Gin".colorize(:red)
+    puts "Rum".colorize(:red)
+    puts "Tequila".colorize(:red)
+    puts "Whiskey".colorize(:red)
+    puts "Cognac".colorize(:red)
+    print "\nMy base liquor of choice is: "
     input = gets.chomp
 
     case input.to_s.downcase
       when "vodka"
-        puts "Modern classic. Enjoy!"
+        puts ""
+        puts "A modern classic. Enjoy!".colorize(:green).colorize(:green)
         build_a_drink("Moscow Mule")
         add_drink_to_favorites("Moscow Mule")
         what_next
       when "gin"
-        puts "Can't go wrong with Negroni. Perfect balance."
+        puts ""
+        puts "Can't go wrong with Negroni. Perfect balance.".colorize(:green)
         build_a_drink("Negroni")
         add_drink_to_favorites("Negroni")
         what_next
       when "rum"
-        puts "Enjoy the Hemingway's take on a classic daiquiri."
+        puts ""
+        puts "Enjoy the Hemingway's take on a classic daiquiri.".colorize(:green)
         build_a_drink("Hemingway Special")
         add_drink_to_favorites("Hemingway Special")
         what_next
       when "tequila"
-        puts "What else but a refreshing and tingy Margarita?"
+        puts ""
+        puts "What else but a refreshing and tingy Margarita?".colorize(:green)
         build_a_drink("Margarita")
         add_drink_to_favorites("Margarita")
         what_next
       when "whiskey"
-        puts "Perfect choice. Here are two options:"
+        puts ""
+        puts "Perfect choice. Here are two options:".colorize(:green)
         build_a_drink("Old Fashioned")
         add_drink_to_favorites("Old Fashioned")
         build_a_drink("Sazerac")
         add_drink_to_favorites("Sazerac")
         what_next
       when "cognac"
-        puts "Go back in time with this Jazz Age classic."
+        puts ""
+        puts "Go back in time with this Jazz Age classic.".colorize(:green)
         build_a_drink("Sidecar")
         add_drink_to_favorites("Sidecar")
         what_next
@@ -223,10 +232,13 @@ class CommandLineInterface
       when 3
         puts "Cheers! Tara!"
         a = Artii::Base.new :font => 'slant'
-        puts a.asciify('IBA Cocktails')
-        puts "                Ver. 0.0.1  |  Licence MIT "
-        puts "         Copyright (C) 2017. FIS | web121117 | JO "
-        puts "  --------------------------------------------------------- "
+        puts a.asciify('- IBA Cocktails -').colorize(:blue)
+        puts "       Absorb liquid wonders into ultramicroscopic dens of your soul.".colorize(:red)
+        puts ""
+        puts "         --------------------------------------------------------- "
+        puts "                       Ver. 0.0.1  |  Licence MIT "
+        puts "                Copyright (C) 2017. FIS | web121117 | JO "
+        puts "         --------------------------------------------------------- "
       else
         puts "Input is invalid. Please choose again."
         what_next
@@ -268,11 +280,13 @@ class CommandLineInterface
     if favorite_drinks.length < 1
       puts "You have not saved any drinks."
     else
-      puts "\nYour favorite drinks so far:"
+      puts "   _________________________________________________________".colorize(:green)
+      puts "\n     Your personal alcosymphonic sublimity so far:      ".colorize(:green)
       puts ""
-      puts favorite_drinks
+      puts "     #{favorite_drinks} ".colorize(:green)
+      puts "   _________________________________________________________".colorize(:green)
     end
-    puts "\nGoing back to main menu now."
+    puts "\nHeading back to navigation journal."
     main_menu
   end
 
@@ -286,7 +300,9 @@ class CommandLineInterface
       end
     end
     most_popular = Drink.all.find(largest_hash_key(hash))
-      puts "\nThe most popular drink at the moment is: #{most_popular.name}"
+      puts "   _________________________________________________________".colorize(:green)
+      puts "\n  |     The greatest concoction ever made is: #{most_popular.name}      ".colorize(:green)
+      puts "   _________________________________________________________".colorize(:green)
       print "\nWould you like to know what #{most_popular.name} is? [Y/n]: "
       input = gets.chomp
       input.to_s.downcase
@@ -295,16 +311,19 @@ class CommandLineInterface
       when "y"
         built_drink = build_a_drink(most_popular.name)
         add_drink_to_favorites(built_drink.name)
+        puts "\nWe are taking you back to navigation journal.".colorize(:green)
+        main_menu
       when "n"
-        puts "OK. Let's go to the Main menu."
+        puts "\nWe are taking you back to navigation journal.".colorize(:green)
         main_menu
       when "exit"
-        puts "Cheers! Tara!"
-        a = Artii::Base.new :font => 'slant'
-        puts a.asciify('IBA Cocktails')
-        puts "                Ver. 0.0.1  |  Licence MIT "
-        puts "         Copyright (C) 2017. FIS | web121117 | JO "
-        puts "  --------------------------------------------------------- "
+        puts a.asciify('- IBA Cocktails -').colorize(:blue)
+        puts "       Absorb liquid wonders into ultramicroscopic dens of your soul.".colorize(:red)
+        puts ""
+        puts "         --------------------------------------------------------- "
+        puts "                       Ver. 0.0.1  |  Licence MIT "
+        puts "                Copyright (C) 2017. FIS | web121117 | JO "
+        puts "         --------------------------------------------------------- "
       else
         puts "Input is invalid. Going back to main menu."
         main_menu
@@ -326,35 +345,31 @@ class CommandLineInterface
 
   def get_me_drunk
     a = Artii::Base.new :font => 'slant'
-    puts a.asciify('Whoop! Whoop!')
-    print "\nYou are at the point of no return. Are you sure you are ready for it? [Y/n]: "
+    puts a.asciify('- Oblivion -')
+    print "\nYou are at a point of no return. Are you consciously ready for it? [Y/n]: "
     input = gets.chomp
     input.to_s.downcase
 
     case input
     when "y"
-      puts "\n You will be drinking:"
+      puts "\n You will be imbibing:"
       puts build_a_drink(random_drink)
       random_drink_loop
-    when "exit"
-      puts "Cheers! Tara!"
-      a = Artii::Base.new :font => 'slant'
-      puts a.asciify('IBA Cocktails')
-      puts "                Ver. 0.0.1  |  Licence MIT "
-      puts "         Copyright (C) 2017. FIS | web121117 | JO "
-      puts "  --------------------------------------------------------- "
+    when "get me out of here"
+      puts "Alright, alright if you so desire. Get home safe!".colorize(:green)
+      main_menu
     when "n"
-      puts "You have been warned that you enter GET ME DRUNK mode. there's no escape."
+      puts "You have been warned you were entering an infinite loop. There's no escape now.".colorize(:green)
       get_me_drunk
     else
-      puts "It's not an option. Please get your mind straight."
+      puts "Invalid input. Your head is spinning.".colorize(:green)
       get_me_drunk
     end
   end
 
   # helper method random_drink_loop
   def random_drink_loop
-    print "\nAre you down for the next one? [Y/n]: "
+    print "\nAre you down for the next liquid adventure? [Y/n]: "
     input = gets.chomp
     input.to_s.downcase
 
@@ -363,19 +378,15 @@ class CommandLineInterface
       puts build_a_drink(random_drink)
       random_drink_loop
     when "n"
-      puts "You have been warned that you enter GET ME DRUNK mode. there's no escape."
+      puts "You have been warned you were entering an infinite loop. There's no escape now.".colorize(:green)
       random_drink_loop
     when "menu"
       main_menu
     when "get me out of here"
-      puts "Alright, alright if you so desire. Get home safe!"
-      a = Artii::Base.new :font => 'slant'
-      puts a.asciify('IBA Cocktails')
-      puts "                Ver. 0.0.1  |  Licence MIT "
-      puts "         Copyright (C) 2017. FIS | web121117 | JO "
-      puts "  --------------------------------------------------------- "
+      puts "Alright, alright if you so desire. Get home safe!".colorize(:green)
+      main_menu
     else
-      puts "Input is invalid. Please get your mind straight."
+      puts "Invalid input. Your head is spinning.".colorize(:green)
       random_drink_loop
     end
 
@@ -394,10 +405,10 @@ class CommandLineInterface
     if input == "y"
       built_drink = build_a_drink(random_drink_value)
       add_drink_to_favorites(built_drink.name)
-      puts "\nNow that you are a little tipsy, let’s move on to the main menu.".colorize(:green)
+      puts "\nNow that you licked the forbideen fruit, there is no way back.".colorize(:green)
       main_menu
     else
-      puts "We thought you were a touch more inquisitive. But that's ok, let's move on."
+      puts "We thought you were a touch more inquisitive. Let's continue our journey."
       main_menu
     end
   end
