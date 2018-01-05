@@ -1,6 +1,5 @@
 def pick_drink_from_list
   Drink.all.map {|drink| puts "#{drink.id}. #{drink.name}"}
-
   print "Please choose a drink by number: "
   input = gets.chomp
 
